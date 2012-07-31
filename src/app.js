@@ -7,7 +7,7 @@ var config = require('../config.js');
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.NODECD_PORT || config.server.port);
+  app.set('port', process.env.WWW_PORT || config.server.port);
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(app.router);

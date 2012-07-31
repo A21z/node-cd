@@ -1,5 +1,5 @@
 Private = {
-	server: {port: "61440"},
+	server: {port: "61440"}, // Port is overriden by env var "WWW_PORT"
 	security: {authorizedIps:[
 		'127.0.0.1',
 		'localhost',
