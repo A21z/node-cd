@@ -9,8 +9,7 @@ Continuously deploy any node app on Github.
 
 ```git clone https://github.com/A21z/node-cd.git
 cd src
-npm install
-```
+npm install```
 
 # Usage:
 
