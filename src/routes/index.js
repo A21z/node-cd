@@ -14,9 +14,22 @@ exports.github = function(req, res){
 	var payload = req.body.payload;
 	if (payload && authorizedIps.indexOf(req.ip) >= 0) {
 		console.log('It\'s payload time!');
+		myExec(config.action.exec);
 		res.writeHead(200);
 	} else {
 		res.writeHead(403);
 	}
 	res.end();
 };
+
+var myExec = function(line) {
+    var exec = require('child_process').exec;
+	var execCallback = function (error, stdout, stderr) {
+	    //console.log('stdout: ' + stdout);
+	    console.log('stderr: ' + stderr);
+	    if (error !== null) {
+	      console.log('exec error: ' + error);
+	    }
+	}
+	var child = exec(line, execCallback);
+}
