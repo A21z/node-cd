@@ -3,7 +3,7 @@ var path = require('path');
 var http = require('http');
 var fs = require('fs');
 var routes = require('./routes.js');
-var config = require('./config.js');
+var config = require('../config.js');
 var app = express();
 
 app.configure(function(){

@@ -1,4 +1,4 @@
-var config = require('../config.js');
+var config = require('../../config.js');
 
 exports.index = function(req, res){
 	res.json( { status: 'ok' });
@@ -26,7 +26,9 @@ var myExec = function(line) {
     var exec = require('child_process').exec;
 	var execCallback = function (error, stdout, stderr) {
 	    //console.log('stdout: ' + stdout);
-	    console.log('stderr: ' + stderr);
+	    if (stderr) {
+	    	console.log('stderr: ' + stderr);
+		}
 	    if (error !== null) {
 	      console.log('exec error: ' + error);
 	    }

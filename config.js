@@ -8,7 +8,7 @@ Private = {
 		'50.57.128.197',
 		'108.171.174.178'
 	]},
-	action: {exec: "ls /"}
+	action: {exec: "../node-cd.sh"}
 };
 
 module.exports = Private;
