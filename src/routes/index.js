@@ -25,10 +25,6 @@ exports.github = function(req, res){
 var myExec = function(line) {
     var exec = require('child_process').exec;
 	var execCallback = function (error, stdout, stderr) {
-	    //console.log('stdout: ' + stdout);
-	    if (stderr) {
-	    	console.log('stderr: ' + stderr);
-		}
 	    if (error !== null) {
 	      console.log('exec error: ' + error);
 	    }
