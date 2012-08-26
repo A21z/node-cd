@@ -16,7 +16,7 @@ It can execute any script you want on your server: deployment, testing, etc.
 
 ## Usage
 
-* Edit node-cd.sh to execute whatever you like after your commits (ex: stop server, git pull, start server)
+* Edit the `node-cd.sh` file to execute whatever you like after your commits (ex: stop server, git pull, start server)
 * Set your post-receive hook as described [here](https://help.github.com/articles/post-receive-hooks) with the url `http://yourserver.com:61440/github`
 * Run the app
 	`WWW_PORT=61440 node app.js`
