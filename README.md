@@ -4,7 +4,9 @@ node-cd
 **Featherweight Github Continuous Deployment**
 
 Continuously deploy any code from Github to your server.  
-node-cd is a simple node.js app handling Github's post-receive hooks. It can execute any script you want on your server: deployment, testing, etc.  
+
+node-cd is a simple node.js app handling Github's post-receive hooks.  
+It can execute any script you want on your server: deployment, testing, etc.  
 
 ## Installation
 
