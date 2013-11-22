@@ -10,7 +10,7 @@ It can execute any script you want on your server: deployment, testing, etc.
 
 ## Installation
 
-	git clone https://github.com/guanbo/node-cd.git
+	git clone https://github.com/A21z/node-cd.git
 	cd node-cd/src
 	npm install
 
