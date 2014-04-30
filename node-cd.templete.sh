@@ -6,6 +6,9 @@ echo "Update Code"
 echo "====================================="
 # cd ~/expro-future
 # git pull
+# pull if you want to merge or fetch/reset to overwrite
+# git fetch
+# git reset --hard origin/master
 
 echo "Install dependency"
 # cd passpro-crm/app

@@ -4,6 +4,9 @@ Private = {
 		authorizedIps:[
 			'127.0.0.1',
 			'localhost',
+      // Bitbucket IPs
+      // 131.103.20.165,
+      // 131.103.20.166
 			// Github's IPs
 			// '207.97.227.253',
 			// '50.57.128.197',
