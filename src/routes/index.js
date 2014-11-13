@@ -20,9 +20,11 @@ exports.github = function(req, res){
   console.log('From IP Address:', req.ip);
   console.log('payload', payload);
   if (payload && (inAuthorizedSubnet(req.ip) || authorizedIps.indexOf(req.ip) >= 0)) {
+
     payload = JSON.parse(payload);
     if (payload.ref === 'refs/heads/master'
 			|| payload.ref === 'refs/heads/develop') {
+
       myExec(config.action.exec);
     }
     res.writeHead(200);
