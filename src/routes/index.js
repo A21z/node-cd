@@ -20,10 +20,11 @@ exports.github = function(req, res){
   console.log('From IP Address:', req.ip);
   console.log('payload', payload);
   if (payload && (inAuthorizedSubnet(req.ip) || authorizedIps.indexOf(req.ip) >= 0)) {
+
     payload = JSON.parse(payload);
     if (payload.ref === 'refs/heads/master'
 			|| payload.ref === 'refs/heads/develop') {
-      myExec(config.action.exec);
+      myExec(config.action.exec + ' ' + payload.repository.name);
     }
     res.writeHead(200);
   } else {
@@ -39,6 +40,7 @@ var inAuthorizedSubnet = function(ip) {
 }
 
 var myExec = function(line) {
+    console.log('Executing: ' + line);
     var exec = require('child_process').exec;
     var execCallback = function (error, stdout, stderr) {
       if (error !== null) {
@@ -46,4 +48,13 @@ var myExec = function(line) {
       }
     }
     var child = exec(line, execCallback);
+    
+    child.stdout.on('data', function (data) {
+	console.log(data);
+    });
+
+    child.stderr.on('data', function (data) {
+	console.log(data);
+    });
+
 }
