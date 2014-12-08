@@ -26,6 +26,7 @@ app.configure('production', function(){
 app.get('/', routes.index.index);
 app.get('/favicon.ico', routes.index.favicon);
 app.post('/github', routes.index.github);
+app.post('/bitbucket', routes.index.bitbucket);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Node-cd server listening on port " + app.get('port'));
