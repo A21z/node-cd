@@ -17,6 +17,7 @@ exports.favicon = function(req, res){
 exports.bitbucket = function(req, res){
   var authorizedIps = config.security.authorizedIps;
   var bitbucketIps = config.security.bitbucketIps;
+  console.log(req.body);
   var commits = req.body.commits;
 
   console.log('From IP Address:', req.ip);
