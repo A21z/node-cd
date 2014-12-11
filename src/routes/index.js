@@ -17,12 +17,14 @@ exports.favicon = function(req, res){
 exports.bitbucket = function(req, res){
   var authorizedIps = config.security.authorizedIps;
   var bitbucketIps = config.security.bitbucketIps;
-  var commits = req.body.commits;
-
+  
+  var payload = req.body.payload;
+  
   console.log('From IP Address:', req.ip);
-  console.log('commits', commits);
+  console.log('payload', payload);
 
-  if (commits && (authorizedIps.indexOf(req.ip) >= 0 || bitbucketIps.indexOf(req.ip) >= 0)){    
+  if (payload && (authorizedIps.indexOf(req.ip) >= 0 || bitbucketIps.indexOf(req.ip) >= 0)){  
+    var commits = JSON.parse(payload).commits;  
     var commitsFromBranch = commits.filter(function(commit) {
       return commit.branch === config.repository.branch || commit.branch === 'refs/heads/master' || commit.branch === 'refs/heads/develop';
     });
