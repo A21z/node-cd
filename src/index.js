@@ -12,9 +12,6 @@ var bodyParser = require('body-parser');
   app.use(morgan('combined'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
-  app.use(express.logger('dev'));
-  app.use(express.bodyParser());
-  app.use(app.router);
   app.use(express.static(path.join(__dirname + 'public')));
 
 /*
