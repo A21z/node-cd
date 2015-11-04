@@ -18,7 +18,7 @@ exports.contentful = function(req, res){
   var authorizedIps = config.security.authorizedIps;
   var contentfulIps = config.security.contentfulIps;
 
-  var payload = req.body.payload;
+  var payload = req;
 
   console.log('From IP Address:', req.ip);
   console.log('payload', payload);
