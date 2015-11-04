@@ -7,7 +7,10 @@
   },
   "dependencies": {
     "express": "4.13.3",
-    "underscore": "",
-    "netmask": "0.0.2"
+    "body-parser": "^1.6.3",
+    "express": "^4.8.3",
+    "morgan": "^1.5.0",
+    "netmask": "0.0.2",
+    "underscore": ""
   }
 }
