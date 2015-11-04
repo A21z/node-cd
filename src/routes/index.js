@@ -30,7 +30,7 @@ exports.bitbucket = function(req, res){
     });
 
     if (commitsFromBranch.length > 0){
-      myExec(config.action.exec);      
+      myExec(config.action.exec.bitbucket);
     }
 
     res.writeHead(200);
@@ -52,7 +52,7 @@ exports.github = function(req, res){
     payload = JSON.parse(payload);
 
     if (payload.ref === config.repository.branch || payload.ref === 'refs/heads/master' || payload.ref === 'refs/heads/develop'){
-      myExec(config.action.exec);
+      myExec(config.action.exec.github);
     }
 
     res.writeHead(200);

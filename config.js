@@ -31,7 +31,13 @@ Private = {
 	repository: {
 		branch: 'refs/heads/master',
 	},
-	action: {exec: "../node-cd.sh"}
+	action: {
+      exec: {
+        github: "../github.sh",
+        bitbucket: "../bitbucket.sh",
+        contentful: "../contentful.sh"
+      }
+    }
 };
 
 module.exports = Private;
