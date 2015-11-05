@@ -18,26 +18,20 @@ exports.contentful = function(req, res){
   var authorizedIps = config.security.authorizedIps;
   var contentfulIps = config.security.contentfulIps;
 
-  var payload = req;
+  var headers = req.headers;
 
   console.log('From IP Address:', req.ip);
-  console.log('payload', payload);
+  console.log('headers', headers);
 
-//  if (payload && (authorizedIps.indexOf(req.ip) >= 0 || contentfulIps.indexOf(req.ip) >= 0)){
-//    var commits = JSON.parse(payload).commits;
-//    var commitsFromBranch = commits.filter(function(commit) {
-//      return commit.branch === config.repository.branch || commit.branch === 'refs/heads/master' || commit.branch === 'refs/heads/develop';
-//    });
-//
-//    if (commitsFromBranch.length > 0){
-//      myExec(config.action.exec.bitbucket);
-//    }
-//
-//    res.writeHead(200);
-//  } else {
-//    res.writeHead(403);
-//  }
-//  res.end();
+  if (headers && ( headers.x-contentful-topic == 'ContentManagement.Entry.publish' || headers.x-contentful-topic == 'ContentManagement.Entry.unpublish' ) ) {
+    myExec(config.action.exec.contentful);
+    res.writeHead(200);
+  } else {
+    res.writeHead(403);
+  }
+
+  res.end();
+
 };
 
 exports.bitbucket = function(req, res){
