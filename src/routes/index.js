@@ -15,8 +15,6 @@ exports.favicon = function(req, res){
 };
 
 exports.contentful = function(req, res){
-  var authorizedIps = config.security.authorizedIps;
-  var contentfulIps = config.security.contentfulIps;
 
   var headers = req.headers;
 
