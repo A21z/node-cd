@@ -21,7 +21,7 @@ exports.contentful = function(req, res){
   console.log('From IP Address:', req.ip);
   console.log('headers', headers);
 
-  if (headers && ( headers.x-contentful-topic == 'ContentManagement.Entry.publish' || headers.x-contentful-topic == 'ContentManagement.Entry.unpublish' ) ) {
+  if (headers && ( headers['x-contentful-topic'] == 'ContentManagement.Entry.publish' || headers['x-contentful-topic'] == 'ContentManagement.Entry.unpublish' ) ) {
     myExec(config.action.exec.contentful);
     res.writeHead(200);
   } else {
