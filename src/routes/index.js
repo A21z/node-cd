@@ -22,6 +22,7 @@ exports.contentful = function(req, res){
   console.log('headers', headers);
 
   if (headers && ( headers['x-contentful-topic'] == 'ContentManagement.Entry.publish' || headers['x-contentful-topic'] == 'ContentManagement.Entry.unpublish' ) ) {
+    console.log('Executing bash file...');
     myExec(config.action.exec.contentful);
     res.writeHead(200);
   } else {
@@ -35,19 +36,20 @@ exports.contentful = function(req, res){
 exports.bitbucket = function(req, res){
   var authorizedIps = config.security.authorizedIps;
   var bitbucketIps = config.security.bitbucketIps;
-  
-  var commits = req.push.changes;
+
+  var commits = req.body.push.changes;
   
   console.log('From IP Address:', req.ip);
-  console.log('commits', commits);
+  console.log('Commits', commits)
 
   if (commits.length > 0 && (authorizedIps.indexOf(req.ip) >= 0 || bitbucketIps.indexOf(req.ip) >= 0)){
 
     var commitsFromBranch = commits.filter(function(commit) {
-      return commit.branch === config.repository.branch || commit.branch === 'refs/heads/master' || commit.branch === 'refs/heads/develop';
+      return commit.name === config.repository.branch || commit.name === 'refs/heads/master' || commit.name === 'refs/heads/develop';
     });
 
     if (commitsFromBranch.length > 0){
+      console.log('Executing bash file...');
       myExec(config.action.exec.bitbucket);
     }
 
