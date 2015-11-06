@@ -36,13 +36,13 @@ exports.bitbucket = function(req, res){
   var authorizedIps = config.security.authorizedIps;
   var bitbucketIps = config.security.bitbucketIps;
   
-  var payload = req.body.payload;
+  var commits = req.push.changes;
   
   console.log('From IP Address:', req.ip);
   console.log('payload', payload);
 
-  if (payload && (authorizedIps.indexOf(req.ip) >= 0 || bitbucketIps.indexOf(req.ip) >= 0)){  
-    var commits = JSON.parse(payload).commits;  
+  if (commits.length > 0 && (authorizedIps.indexOf(req.ip) >= 0 || bitbucketIps.indexOf(req.ip) >= 0)){
+
     var commitsFromBranch = commits.filter(function(commit) {
       return commit.branch === config.repository.branch || commit.branch === 'refs/heads/master' || commit.branch === 'refs/heads/develop';
     });
