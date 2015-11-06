@@ -40,12 +40,11 @@ exports.bitbucket = function(req, res){
   var commits = req.body.push.changes;
   
   console.log('From IP Address:', req.ip);
-  console.log('Commits', commits)
 
-  if (commits.length > 0 && (authorizedIps.indexOf(req.ip) >= 0 || bitbucketIps.indexOf(req.ip) >= 0)){
+  if (commits.length > 0){
 
     var commitsFromBranch = commits.filter(function(commit) {
-      return commit.name === config.repository.branch || commit.name === 'refs/heads/master' || commit.name === 'refs/heads/develop';
+      return commit.new.name === config.repository.branch || commit.new.name === 'refs/heads/master' || commit.new.name === 'refs/heads/develop';
     });
 
     if (commitsFromBranch.length > 0){
