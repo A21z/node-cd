@@ -8,7 +8,7 @@ Continuously deploy any code from Github to your server.
 node-cd is a simple node.js app handling Github's and Bitbucket's post-receive hooks.  
 It can execute any script you want on your server: deployment, testing, etc. 
 
-Forked from https://github.com/A21z/node-cd to include Contentful, as well as to update the codes for Bitbucket
+Forked from https://github.com/A21z/node-cd to include Contentful, as well as to update the endpoint for Bitbucket
 
 ## Installation
 
