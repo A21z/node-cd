@@ -39,7 +39,7 @@ exports.bitbucket = function(req, res){
   var commits = req.push.changes;
   
   console.log('From IP Address:', req.ip);
-  console.log('payload', payload);
+  console.log('commits', commits);
 
   if (commits.length > 0 && (authorizedIps.indexOf(req.ip) >= 0 || bitbucketIps.indexOf(req.ip) >= 0)){
 
