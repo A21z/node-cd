@@ -1,3 +1,3 @@
-echo "Updating Content
+echo "Updating Content"
 echo "====================================="
 
