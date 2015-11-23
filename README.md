@@ -3,17 +3,14 @@ node-cd
 
 **Featherweight Github/Bitbucket/Contentful Continuous Deployment**
 
-Continuously deploy any code from Github to your server.  
+Continuously deploy any code from Github/Bitbucket/Contentful to your server.
 
-node-cd is a simple node.js app handling Github's and Bitbucket's post-receive hooks.  
+node-cd is a simple node.js app handling Github's, Bitbucket's and Contentful's post-receive hooks.
 It can execute any script you want on your server: deployment, testing, etc.
-
-Forked from https://github.com/A21z/node-cd to include Contentful, as well as to update the endpoint for Bitbucket
 
 ## Installation
 
-	git clone https://github.com/signorekai/node-cd.git
-	cd node-cd/src
+	git clone https://github.com/A21z/node-cd.git
 	npm install
 
 ## Usage
