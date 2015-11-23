@@ -22,3 +22,5 @@ It can execute any script you want on your server: deployment, testing, etc.
 * **For Bitbucket**:  Set your post-receive hook as described [here](https://confluence.atlassian.com/display/BITBUCKET/POST+hook+management) with the url `http://yourserver.com:61440/bitbucket`
 * Run the app
 	`WWW_PORT=61440 node node-cd.js`
+
+[![Build Status](https://travis-ci.org/A21z/node-cd.svg?branch=2.0.0)](https://travis-ci.org/A21z/node-cd)
