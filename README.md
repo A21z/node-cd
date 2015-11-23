@@ -6,7 +6,7 @@ node-cd
 Continuously deploy any code from Github to your server.  
 
 node-cd is a simple node.js app handling Github's and Bitbucket's post-receive hooks.  
-It can execute any script you want on your server: deployment, testing, etc. 
+It can execute any script you want on your server: deployment, testing, etc.
 
 Forked from https://github.com/A21z/node-cd to include Contentful, as well as to update the endpoint for Bitbucket
 
@@ -24,3 +24,5 @@ Forked from https://github.com/A21z/node-cd to include Contentful, as well as to
 * **For Contentful**: Set your webhook in your Settings > Webhooks with the url `http://yourserver.com:61440/contentful`
 * Run the app
 	`WWW_PORT=61440 node index.js`
+
+[![Build Status](https://travis-ci.org/A21z/node-cd.svg?branch=2.0.0)](https://travis-ci.org/A21z/node-cd)
