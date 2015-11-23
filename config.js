@@ -14,8 +14,14 @@ Private = {
 			// '108.171.174.178'
 		],
 		bitbucketIps: [
-			'131.103.20.165',
-      		'131.103.20.166'
+			'131.103.20.160',
+			'131.103.20.27',
+            '131.103.20.165',
+      		'165.254.145.0',
+      		'165.254.145.26',
+            '104.192.143.0',
+            '104.192.143.24'
+
 		],
 		githubIps: [
 			'207.97.227.253',
@@ -29,9 +35,15 @@ Private = {
 		]
 	},
 	repository: {
-		branch: 'refs/heads/master',
+		branch: 'master',
 	},
-	action: {exec: "../node-cd.sh"}
+	action: {
+      exec: {
+        github: "../github.sh",
+        bitbucket: "../bitbucket.sh",
+        contentful: "../contentful.sh"
+      }
+    }
 };
 
 module.exports = Private;

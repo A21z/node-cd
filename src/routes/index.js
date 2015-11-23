@@ -14,23 +14,42 @@ exports.favicon = function(req, res){
   res.end();
 };
 
+exports.contentful = function(req, res){
+
+  var headers = req.headers;
+
+  console.log('From IP Address:', req.ip);
+  console.log('headers', headers);
+
+  if (headers && ( headers['x-contentful-topic'] == 'ContentManagement.Entry.publish' || headers['x-contentful-topic'] == 'ContentManagement.Entry.unpublish' ) ) {
+    console.log('Executing bash file...');
+    myExec(config.action.exec.contentful);
+    res.writeHead(200);
+  } else {
+    res.writeHead(403);
+  }
+
+  res.end();
+
+};
+
 exports.bitbucket = function(req, res){
   var authorizedIps = config.security.authorizedIps;
   var bitbucketIps = config.security.bitbucketIps;
-  
-  var payload = req.body.payload;
+
+  var commits = req.body.push.changes;
   
   console.log('From IP Address:', req.ip);
-  console.log('payload', payload);
 
-  if (payload && (authorizedIps.indexOf(req.ip) >= 0 || bitbucketIps.indexOf(req.ip) >= 0)){  
-    var commits = JSON.parse(payload).commits;  
+  if (commits.length > 0){
+
     var commitsFromBranch = commits.filter(function(commit) {
-      return commit.branch === config.repository.branch || commit.branch === 'refs/heads/master' || commit.branch === 'refs/heads/develop';
+      return commit.new.name === config.repository.branch || commit.new.name === 'refs/heads/master' || commit.new.name === 'refs/heads/develop';
     });
 
     if (commitsFromBranch.length > 0){
-      myExec(config.action.exec);      
+      console.log('Executing bash file...');
+      myExec(config.action.exec.bitbucket);
     }
 
     res.writeHead(200);
@@ -52,7 +71,7 @@ exports.github = function(req, res){
     payload = JSON.parse(payload);
 
     if (payload.ref === config.repository.branch || payload.ref === 'refs/heads/master' || payload.ref === 'refs/heads/develop'){
-      myExec(config.action.exec);
+      myExec(config.action.exec.github);
     }
 
     res.writeHead(200);
