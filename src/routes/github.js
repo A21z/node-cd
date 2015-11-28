@@ -16,7 +16,14 @@ GitHub.prototype.post = function (req, res) {
   var githubIps = config.security.githubIps
   var payload = req.body.payload
 
-  if (!payload || !(inAuthorizedSubnet(req.ip) || authorizedIps.indexOf(req.ip) >= 0 || githubIps.indexOf(req.ip) >= 0)) {
+  if (!payload) {
+    console.log('No payload')
+    res.writeHead(400)
+    res.end()
+    return
+  }
+
+  if (!(inAuthorizedSubnet(req.ip) || authorizedIps.indexOf(req.ip) >= 0 || githubIps.indexOf(req.ip) >= 0)) {
     console.log('Unauthorized IP:', req.ip)
     res.writeHead(403)
     res.end()
