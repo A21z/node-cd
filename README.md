@@ -22,4 +22,4 @@ It can execute any script you want on your server: deployment, testing, etc.
 * Run the app
 	`WWW_PORT=61440 node index.js`
 
-[![Build Status](https://travis-ci.org/A21z/node-cd.svg?branch=2.0.0)](https://travis-ci.org/A21z/node-cd)
+[![Build Status](https://travis-ci.org/A21z/node-cd.svg)](https://travis-ci.org/A21z/node-cd)
