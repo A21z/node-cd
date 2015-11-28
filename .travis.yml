@@ -2,5 +2,5 @@ language: node_js
 node_js:
   - 4.2.2
   - 5.0.0
-script: "cd src && npm install"
+script: "npm test"
 sudo: false
