@@ -15,9 +15,7 @@ test('The GitHub endpoint with authorized IP should return 200', (assert) => {
 
   var req = {
     ip: '1.2.3.4',
-    body: {
-      payload: '{"dummy": true}'
-    }
+    body: '{"dummy": true}'
   }
   var res = {}
   var code
@@ -48,9 +46,7 @@ test('The GitHub endpoint with authorized GitHub IP should return 200', (assert)
 
   var req = {
     ip: '1.2.3.4',
-    body: {
-      payload: '{"dummy": true}'
-    }
+    body: '{"dummy": true}'
   }
   var res = {}
   var code
@@ -81,9 +77,7 @@ test('The GitHub endpoint with unauthorized GitHub IP should return 403', (asser
 
   var req = {
     ip: '1.2.3.4',
-    body: {
-      payload: '{"dummy": true}'
-    }
+    body: '{"dummy": true}'
   }
   var res = {}
   var code
@@ -114,7 +108,7 @@ test('The GitHub endpoint with no payload should return 400', (assert) => {
 
   var req = {
     ip: '1.2.3.4',
-    body: {}
+    body: ''
   }
   var res = {}
   var code
