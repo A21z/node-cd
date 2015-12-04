@@ -3,7 +3,7 @@ var bitbucketController = require('../../src/routes/bitbucket.js')
 
 function mockReq () {
   return {
-    ip: '1.2.3.4',
+    ip: '::ffff:1.2.3.4',
     body: {
       push: {
         changes: [{

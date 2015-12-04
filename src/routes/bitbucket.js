@@ -14,8 +14,9 @@ Bitbucket.prototype.post = function (req, res) {
   var authorizedIps = config.security.authorizedIps
   var bitbucketIps = config.security.bitbucketIps
   var commits = req.body.push.changes
+  var ipv4 = req.ip.replace('::ffff:', '')
 
-  if (!(authorizedIps.indexOf(req.ip) >= 0 || bitbucketIps.indexOf(req.ip) >= 0)) {
+  if (!(authorizedIps.indexOf(ipv4) >= 0 || bitbucketIps.indexOf(ipv4) >= 0)) {
     console.log('Unauthorized IP:', req.ip)
     res.writeHead(403)
     res.end()
