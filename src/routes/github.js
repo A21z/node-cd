@@ -31,8 +31,6 @@ GitHub.prototype.post = function (req, res) {
     return
   }
 
-  payload = JSON.parse(payload)
-
   if (payload.ref === config.repository.branch ||
     payload.ref === 'refs/heads/master' ||
     payload.ref === 'refs/heads/develop') {
