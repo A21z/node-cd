@@ -23,8 +23,9 @@ GitHub.prototype.post = function (req, res) {
     return
   }
 
-  if (!(inAuthorizedSubnet(req.ip) || authorizedIps.indexOf(req.ip) >= 0 || githubIps.indexOf(req.ip) >= 0)) {
-    console.log('Unauthorized IP:', req.ip)
+  var ipv4 = req.ip.replace('::ffff:', '')
+  if (!(inAuthorizedSubnet(ipv4) || authorizedIps.indexOf(ipv4) >= 0 || githubIps.indexOf(ipv4) >= 0)) {
+    console.log('Unauthorized IP:', req.ip, '(', ipv4, ')')
     res.writeHead(403)
     res.end()
     return
