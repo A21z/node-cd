@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 0.6
-  - 0.8
-  - 0.10.30
-script: "cd src && npm install"
+  - 4.2.2
+  - 5.0.0
+script: "npm test"
+sudo: false
