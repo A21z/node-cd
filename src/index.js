@@ -18,9 +18,9 @@ app.use(express.static(path.join(__dirname + 'public')))
 
 app.get('/', routes.index.index)
 app.get('/favicon.ico', routes.index.favicon)
-app.post('/github', githubController.create(config))
-app.post('/bitbucket', bitbucketController.create(config))
-app.post('/contentful', contentfulController.create(config))
+app.post('/github', githubController.create(config).post)
+app.post('/bitbucket', bitbucketController.create(config).post)
+app.post('/contentful', contentfulController.create(config).post)
 
 http.createServer(app).listen(app.get('port'), function () {
   console.log('Node-cd server listening on port ' + app.get('port'))
