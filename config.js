@@ -30,9 +30,9 @@ var Private = {
   },
   action: {
     exec: {
-      github: '../github.sh',
-      bitbucket: '../bitbucket.sh',
-      contentful: '../contentful.sh'
+      github: './github.sh',
+      bitbucket: './bitbucket.sh',
+      contentful: './contentful.sh'
     }
   }
 }
