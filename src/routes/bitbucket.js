@@ -13,7 +13,6 @@ module.exports.create = create
 Bitbucket.prototype.post = function (req, res) {
   var authorizedIps = config.security.authorizedIps
   var bitbucketIps = config.security.bitbucketIps
-  var commits = req.body.push.changes
   var ipv4 = req.ip.replace('::ffff:', '')
 
   if (!(authorizedIps.indexOf(ipv4) >= 0 || bitbucketIps.indexOf(ipv4) >= 0)) {
@@ -23,6 +22,13 @@ Bitbucket.prototype.post = function (req, res) {
     return
   }
 
+  if (!req.body.push) {
+    res.writeHead(204)
+    res.end()
+    return
+  }
+
+  var commits = req.body.push.changes
   if (commits.length <= 0) {
     res.writeHead(204)
     res.end()
