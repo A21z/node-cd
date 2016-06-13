@@ -1,11 +1,13 @@
 var config
+var Ipv4Utils
 
-function Bitbucket (conf) {
+function Bitbucket (conf, ipv4) {
   config = conf
+  Ipv4Utils = ipv4
 }
 
-function create (conf) {
-  return new Bitbucket(conf)
+function create (conf, ipv4) {
+  return new Bitbucket(conf, ipv4)
 }
 
 module.exports.create = create
@@ -13,7 +15,7 @@ module.exports.create = create
 Bitbucket.prototype.post = function (req, res) {
   var authorizedIps = config.security.authorizedIps
   var bitbucketIps = config.security.bitbucketIps
-  var ipv4 = req.ip.replace('::ffff:', '')
+  var ipv4 = new Ipv4Utils().getIpv4FromReq(req, config)
 
   if (!(authorizedIps.indexOf(ipv4) >= 0 || bitbucketIps.indexOf(ipv4) >= 0)) {
     console.log('Unauthorized IP:', req.ip)

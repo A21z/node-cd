@@ -5,6 +5,7 @@ var routes = require('./routes.js')
 var githubController = require('./routes/github.js')
 var bitbucketController = require('./routes/bitbucket.js')
 var contentfulController = require('./routes/contentful.js')
+var Ipv4Utils = require('./Ipv4Utils.js')
 var config = require('../config.js')
 var app = express()
 var morgan = require('morgan')
@@ -18,8 +19,8 @@ app.use(express.static(path.join(__dirname + 'public')))
 
 app.get('/', routes.index.index)
 app.get('/favicon.ico', routes.index.favicon)
-app.post('/github', githubController.create(config).post)
-app.post('/bitbucket', bitbucketController.create(config).post)
+app.post('/github', githubController.create(config, Ipv4Utils).post)
+app.post('/bitbucket', bitbucketController.create(config, Ipv4Utils).post)
 app.post('/contentful', contentfulController.create(config).post)
 
 http.createServer(app).listen(app.get('port'), function () {

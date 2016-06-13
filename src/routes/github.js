@@ -1,12 +1,14 @@
 var Netmask = require('netmask').Netmask
 var config
+var Ipv4Utils
 
-function GitHub (conf) {
+function GitHub (conf, ipv4) {
   config = conf
+  Ipv4Utils = ipv4
 }
 
-function create (conf) {
-  return new GitHub(conf)
+function create (conf, ipv4) {
+  return new GitHub(conf, ipv4)
 }
 
 module.exports.create = create
@@ -23,7 +25,7 @@ GitHub.prototype.post = function (req, res) {
     return
   }
 
-  var ipv4 = req.ip.replace('::ffff:', '')
+  var ipv4 = new Ipv4Utils().getIpv4FromReq(req, config)
   if (!(inAuthorizedSubnet(ipv4) || authorizedIps.indexOf(ipv4) >= 0 || githubIps.indexOf(ipv4) >= 0)) {
     console.log('Unauthorized IP:', req.ip, '(', ipv4, ')')
     res.writeHead(403)

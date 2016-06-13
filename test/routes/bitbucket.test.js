@@ -1,5 +1,6 @@
 var test = require('tape').test
 var bitbucketController = require('../../src/routes/bitbucket.js')
+var Ipv4Utils = require('../../src/Ipv4Utils.js')
 
 function mockReq () {
   return {
@@ -30,7 +31,7 @@ test('The Bitbucket endpoint with non-push payload should return 204', (assert) 
         bitbucket: '../bitbucket.sh'
       }
     }
-  })
+  }, Ipv4Utils)
 
   var req = { ip: '::ffff:1.2.3.4', body: {} }
   var res = {}
@@ -62,7 +63,7 @@ test('The Bitbucket endpoint with authorized IP should return 200', (assert) => 
         bitbucket: '../bitbucket.sh'
       }
     }
-  })
+  }, Ipv4Utils)
 
   var req = mockReq()
   var res = {}
@@ -94,7 +95,7 @@ test('The Bitbucket endpoint with unauthorized IP should return 403', (assert) =
         bitbucket: '../bitbucket.sh'
       }
     }
-  })
+  }, Ipv4Utils)
 
   var req = mockReq()
   var res = {}

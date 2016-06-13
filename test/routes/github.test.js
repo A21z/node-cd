@@ -1,5 +1,6 @@
 var test = require('tape').test
 var githubController = require('../../src/routes/github.js')
+var Ipv4Utils = require('../../src/Ipv4Utils.js')
 
 test('The GitHub endpoint with authorized IP should return 200', (assert) => {
   var github = githubController.create({
@@ -11,7 +12,7 @@ test('The GitHub endpoint with authorized IP should return 200', (assert) => {
     repository: {
       branch: 'master'
     }
-  })
+  }, Ipv4Utils)
 
   var req = {
     ip: '1.2.3.4',
@@ -42,7 +43,7 @@ test('The GitHub endpoint with authorized IPv6 should return 200', (assert) => {
     repository: {
       branch: 'master'
     }
-  })
+  }, Ipv4Utils)
 
   var req = {
     ip: '::ffff:1.2.3.4',
@@ -73,7 +74,7 @@ test('The GitHub endpoint with authorized GitHub IP should return 200', (assert)
     repository: {
       branch: 'master'
     }
-  })
+  }, Ipv4Utils)
 
   var req = {
     ip: '1.2.3.4',
@@ -104,7 +105,7 @@ test('The GitHub endpoint with unauthorized GitHub IP should return 403', (asser
     repository: {
       branch: 'master'
     }
-  })
+  }, Ipv4Utils)
 
   var req = {
     ip: '1.2.3.4',
