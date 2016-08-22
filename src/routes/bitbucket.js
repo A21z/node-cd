@@ -19,8 +19,8 @@ Bitbucket.prototype.post = function (req, res) {
 
   var authorizedIp = false
 
-  //check bitbucket ip ranges
-  bitbucketIps.forEach( function(value) {
+  // check bitbucket ip ranges
+  bitbucketIps.forEach(function (value) {
     var block = new Netmask(value)
     if (block.contains(ipv4)) authorizedIp = true
   })
