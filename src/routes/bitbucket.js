@@ -17,13 +17,13 @@ Bitbucket.prototype.post = function (req, res) {
   var bitbucketIps = config.security.bitbucketIps
   var ipv4 = req.ip.replace('::ffff:', '')
 
-  var authorizedIp = false;
+  var authorizedIp = false
 
   //check bitbucket ip ranges
-  bitbucketIps.forEach(function(value){
-    var block = new Netmask(value);
-    if(block.contains(ipv4)) authorizedIp = true;
-  });
+  bitbucketIps.forEach( function(value) {
+    var block = new Netmask(value)
+    if (block.contains(ipv4)) authorizedIp = true
+  })
 
   if (!(authorizedIp || authorizedIps.indexOf(ipv4) >= 0)) {
     console.log('Unauthorized IP:', req.ip)
