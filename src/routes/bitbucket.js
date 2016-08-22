@@ -1,3 +1,5 @@
+var Netmask = require('netmask').Netmask
+
 var config
 
 function Bitbucket (conf) {
@@ -15,7 +17,15 @@ Bitbucket.prototype.post = function (req, res) {
   var bitbucketIps = config.security.bitbucketIps
   var ipv4 = req.ip.replace('::ffff:', '')
 
-  if (!(authorizedIps.indexOf(ipv4) >= 0 || bitbucketIps.indexOf(ipv4) >= 0)) {
+  var authorizedIp = false
+
+  // check bitbucket ip ranges
+  bitbucketIps.forEach(function (value) {
+    var block = new Netmask(value)
+    if (block.contains(ipv4)) authorizedIp = true
+  })
+
+  if (!(authorizedIp || authorizedIps.indexOf(ipv4) >= 0)) {
     console.log('Unauthorized IP:', req.ip)
     res.writeHead(403)
     res.end()
